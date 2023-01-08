@@ -301,7 +301,7 @@ class Details extends React.Component {
         )
     }
 }
-//////Omkar suryawanshi
+
 export default Details;
 
 
