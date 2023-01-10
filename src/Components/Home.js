@@ -7,6 +7,30 @@ import { location } from '../OmitoData/location';
 
 import axios from 'axios';
 
+const Home = () => {
+    const[locations, setLocations] = useState([])
+    const[mealtypes, setMealtypes] = useState([])
+
+    useEffect(()=>{
+        sessionStorage.clear();
+        setLocations(location)
+        setMealtypes(mealtype)
+    },[])
+
+
+    return (
+        <>
+            <div>
+                <Wallpaper locationsData={locations} />
+                <QuickSearch mealtypesData={mealtypes} />
+            </div>
+        </>
+    )
+
+}
+
+export default Home;
+
 // class Home extends React.Component {
 //     constructor() {
 //         super();
@@ -56,28 +80,3 @@ import axios from 'axios';
 // }
 
 // export default Home;
-
-
-const Home = () => {
-    const[locations, setLocations] = useState([])
-    const[mealtypes, setMealtypes] = useState([])
-
-    useEffect(()=>{
-        sessionStorage.clear();
-        setLocations(location)
-        setMealtypes(mealtype)
-    },[])
-
-
-    return (
-        <>
-            <div>
-                <Wallpaper locationsData={locations} />
-                <QuickSearch mealtypesData={mealtypes} />
-            </div>
-        </>
-    )
-
-}
-
-export default Home;
