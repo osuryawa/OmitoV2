@@ -65,8 +65,8 @@ class Header extends React.Component {
                     style={customStyles}
                 >
                     <div>
-                        <button className='btn btn-primary'>Login with Credentails</button>
-                        <div className="closeButton" onClick={() => this.handleModal('loginModalIsOpen', false)}>close</div>
+                        <button className='btn btn-primary'>Login with Credentails</button><br />
+                        <button type="button" class="btn btn-danger btn-1" onClick={() => this.handleModal('loginModalIsOpen', false)}>close</button>
                         <div>
                             <GoogleLogin
                                 clientId="1054161126566-gi7p8nv6hd30eeq50qcns58gpst4730a.apps.googleusercontent.com"
