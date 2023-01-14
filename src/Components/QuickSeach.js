@@ -2,11 +2,12 @@ import React from 'react';
 import '../Styles/home.css';
 import QuickSearchItem from './QuickSearchItem';
 
-class QuickSearch extends React.Component {
-    render() {
-        const { mealtypesData } = this.props;
-        return (
-            <div>
+
+const QuickSeach = (props) => {
+    const { mealtypesData } = props;
+  return (
+    <div>
+      <div>
                 <div className="quicksearch">
                     <p className="quicksearchHeading">
                         Quick Searches
@@ -29,8 +30,9 @@ class QuickSearch extends React.Component {
                     </div>
                 </div>
             </div>
-        )
-    }
+    </div>
+  )
 }
 
-export default QuickSearch;
+export default QuickSeach
+
