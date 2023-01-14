@@ -1,4 +1,4 @@
-export const restaurants = [
+export const restaurantApiData = [
     {
         "name": "Domino's",
         "city": "Delhi",
