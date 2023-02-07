@@ -31,7 +31,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })
@@ -42,7 +42,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'GET',
-            url: 'https://limitless-refuge-87216.herokuapp.com/locations',
+            url: 'http://localhost:4567/locations',
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => {
@@ -67,7 +67,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })
@@ -93,7 +93,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })
@@ -120,7 +120,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })
@@ -146,7 +146,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })
@@ -180,7 +180,7 @@ class Filter extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'https://limitless-refuge-87216.herokuapp.com/filter',
+            url: 'http://localhost:4567/filter',
             headers: { 'Content-Type': 'application/json' },
             data: filterObj
         })

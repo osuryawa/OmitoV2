@@ -17,7 +17,7 @@ const Wallpaper = (props) => {
 
         // axios({
         //     method: 'GET',
-        //     url: `https://limitless-refuge-87216.herokuapp.com/restaurants/${locationId}`,
+        //     url: `http://localhost:4567/restaurants/${locationId}`,
         //     headers: { 'Content-Type': 'application/json' }
         // })
         //     .then(response => {
@@ -116,7 +116,7 @@ export default withRouter(Wallpaper);
 
 //         // axios({
 //         //     method: 'GET',
-//         //     url: `https://limitless-refuge-87216.herokuapp.com/restaurants/${locationId}`,
+//         //     url: `http://localhost:4567/restaurants/${locationId}`,
 //         //     headers: { 'Content-Type': 'application/json' }
 //         // })
 //         //     .then(response => {

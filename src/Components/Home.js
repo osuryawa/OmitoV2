@@ -44,7 +44,7 @@ export default Home;
 //         sessionStorage.clear();
 //         axios({
 //             method: 'GET',
-//             url: 'https://limitless-refuge-87216.herokuapp.com/locations',
+//             url: 'http://localhost:4567/locations',
 //             headers: { 'Content-Type': 'application/json' }
 //         })
 //             .then(response => {
@@ -54,7 +54,7 @@ export default Home;
 
 //         axios({
 //             method: 'GET',
-//             url: 'https://limitless-refuge-87216.herokuapp.com/mealtypes',
+//             url: 'http://localhost:4567/mealtypes',
 //             headers: { 'Content-Type': 'application/json' }
 //         })
 //             .then(response => {
