@@ -64,17 +64,21 @@ class Header extends React.Component {
                     isOpen={loginModalIsOpen}
                     style={customStyles}
                 >
-                    <div>
-                        <button className='btn btn-primary'>Login with Credentails</button>
-                        <div className="closeButton" onClick={() => this.handleModal('loginModalIsOpen', false)}>close</div>
-                        <div>
-                            <GoogleLogin
-                                clientId="1054161126566-gi7p8nv6hd30eeq50qcns58gpst4730a.apps.googleusercontent.com"
-                                buttonText="Continue with Gmail"
-                                onSuccess={this.responseGoogle}
-                                onFailure={this.responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            />
+                    <div className='modal-class'>
+                        <div class="modal-header">
+                            <button type="button" className='close close-btn' onClick={() => this.handleModal('loginModalIsOpen', false)}>X</button>
+                        </div>
+                        <div class="modal-body">
+                            <button className='btn btn-primary btn-1'>Login with Credentails</button>
+                            <div className='btn-1'>
+                                <GoogleLogin
+                                    clientId="1054161126566-gi7p8nv6hd30eeq50qcns58gpst4730a.apps.googleusercontent.com"
+                                    buttonText="Continue with Gmail"
+                                    onSuccess={this.responseGoogle}
+                                    onFailure={this.responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                                />
+                            </div>
                         </div>
                     </div>
                 </Modal>
