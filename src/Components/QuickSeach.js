@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/home.css';
-import QuickSearchItem from './QuickSearchItem';
+import QuickSearchItem from './quickSearchItem';
 
 
 const QuickSeach = (props) => {
