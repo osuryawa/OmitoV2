@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Styles/home.css";
 import Wallpaper from "./Wallpaper";
-import QuickSearch from "./quickSeach";
+import QuickSearch from "./quickSearch";
 
 const Home = () => {
   const [locations, setLocations] = useState([]);

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./home";
-import Filter from "./Filter";
+import Home from "./Home";
+import Filter from "./filter";
 import Details from "./Details";
 import Header from "./Header";
 
