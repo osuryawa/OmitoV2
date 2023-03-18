@@ -47,8 +47,8 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    mealTypeData: state.mealTypeData,
-    isMealtypesLoading: state.loading,
+    mealTypeData: state.mealTypes.mealTypeData,
+    isMealtypesLoading: state.mealTypes.loading,
   };
 };
 
