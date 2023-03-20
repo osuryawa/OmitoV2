@@ -1,30 +1,30 @@
-import { mealTypesActions } from "../Actions/actions";
+import { restaurantsActions } from "../Actions/actions";
 
 const initialState = {
   loading: false,
-  mealTypeData: [],
+  restaurants: [],
   error: "",
 };
 
-export const mealTypes = (state = initialState, action) => {
+export const restaurants = (state = initialState, action) => {
   switch (action.type) {
-    case mealTypesActions.FETCH_MEALTYPE_REQUEST:
+    case restaurantsActions.FETCH_RESTAURANTS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case mealTypesActions.FETCH_MEALTYPE_SUCCESS:
+    case restaurantsActions.FETCH_RESTAURANTS_SUCCESS:
       return {
         ...state,
         loading: false,
-        mealTypeData: action.payload,
+        restaurants: action.payload,
         error: "",
       };
-    case mealTypesActions.FETCH_MEALTYPE_FAILURE:
+    case restaurantsActions.FETCH_RESTAURANTS_FAILURE:
       return {
         ...state,
         loading: false,
-        mealTypeData: [],
+        restaurants: [],
         error: action.payload,
       };
     default:

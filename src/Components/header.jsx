@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import Modal from "react-modal";
 import GoogleLogin from "react-google-login";
 import { useState } from "react";
-import Login from "./login";
-import SignUpForm from "./signUp-form";
+import Login from "./Login";
+import SignUpForm from "./SignUp-form";
 const customStyles = {
   content: {
     top: "50%",

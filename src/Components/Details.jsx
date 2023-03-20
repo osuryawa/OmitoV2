@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { connect } from "react-redux";
-import { fetchRestaurants } from "../Container/Actions/details";
+import { fetchRestaurantsDetails } from "../Container/Actions/restraurantDetails";
 import { fetchMenuItems } from "../Container/Actions/menuItems";
 
 const customStyles = {
@@ -21,37 +21,48 @@ const customStyles = {
   },
 };
 
-function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsCall, location, isRestaurantLoading, restaurantsData, isRestaurantError, isMenuItemsLoading, menuItemsData, isMenuItemsError }) {
+function Details({
+  isMenuItemsModalIsOpen,
+  fetchMenuItemsCall,
+  fetchRestaurantsCall,
+  location,
+  isRestaurantLoading,
+  restaurantsData,
+  isRestaurantError,
+  isMenuItemsLoading,
+  menuItemsData,
+  isMenuItemsError,
+}) {
   const [restId, setRestId] = useState(undefined);
   const [menuItems, setMenuItems] = useState([]);
   const [menuItemsModalIsOpen, setMenuItemsModalIsOpen] = useState(false);
   const [galleryModalIsOpen, setGalleryModalIsOpen] = useState(false);
   const [formModalIsOpen, setFormModalIsOpen] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
-  const [name, setName] = useState(undefined)
-  const [contactNumber, setContactNumber] = useState(undefined)
-  const [email, setEmail] = useState(undefined)
-  const [address, setAddress] = useState(undefined)
+  const [name, setName] = useState(undefined);
+  const [contactNumber, setContactNumber] = useState(undefined);
+  const [email, setEmail] = useState(undefined);
+  const [address, setAddress] = useState(undefined);
 
   useEffect(() => {
     const qs = queryString.parse(location.search);
     const { restaurant } = qs;
-    setRestId(restaurant)
-    fetchRestaurantsCall(restaurant)
-  }, [])
+    setRestId(restaurant);
+    fetchRestaurantsCall(restaurant);
+  }, []);
 
   useEffect(() => {
-    isMenuItemsModalIsOpen && setMenuItemsModalIsOpen(true)
-    console.log('isMenuItemsModalIsOpen', isMenuItemsModalIsOpen)
-  }, [isMenuItemsModalIsOpen])
+    isMenuItemsModalIsOpen && setMenuItemsModalIsOpen(true);
+    console.log("isMenuItemsModalIsOpen", isMenuItemsModalIsOpen);
+  }, [isMenuItemsModalIsOpen]);
 
   useEffect(() => {
-    menuItems.length && setMenuItems(menuItemsData)
-  }, [menuItemsData])
+    menuItems.length && setMenuItems(menuItemsData);
+  }, [menuItemsData]);
 
   const handleOrder = () => {
-    fetchMenuItemsCall(restId)
-  }
+    fetchMenuItemsCall(restId);
+  };
 
   const addItems = (index, operationType) => {
     let total = 0;
@@ -68,15 +79,15 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
     items.map((item) => {
       total += item.qty * item.price;
     });
-    setMenuItems(items)
-    setSubTotal(total)
+    setMenuItems(items);
+    setSubTotal(total);
     // this.setState({ menuItems: items, subTotal: total });
-  }
+  };
 
   const isDate = (val) => {
     // Cross realm comptatible
     return Object.prototype.toString.call(val) === "[object Date]";
-  }
+  };
 
   const isObj = (val) => {
     return typeof val === "object";
@@ -126,7 +137,6 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
   };
 
   const handlePayment = (event) => {
-
     if (!email) {
       alert("Please fill this field and then Proceed...");
     } else {
@@ -145,32 +155,38 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
       });
     }
     event.preventDefault();
-  }
+  };
 
   return (
     <div>
       <div>
         <img
-          src={`./${restaurantsData.restaurant && restaurantsData.restaurant.image}`}
+          src={`./${
+            restaurantsData.restaurant && restaurantsData.restaurant.image
+          }`}
           alt="Sorry for the Inconvinience"
           width="100%"
           height="300px"
         />
-        <button
-          className="button"
-          onClick={() => setGalleryModalIsOpen(true)}
-        >
+        <button className="button" onClick={() => setGalleryModalIsOpen(true)}>
           Click to see Image Gallery
         </button>
       </div>
-      <div className="heading">{restaurantsData.restaurant && restaurantsData.restaurant.name}</div>
+      <div className="heading">
+        {restaurantsData.restaurant && restaurantsData.restaurant.name}
+      </div>
       <button className="btn-order" onClick={() => handleOrder()}>
         Place Online Order
       </button>
 
       <div className="tabs">
         <div className="tab">
-          <input type="radio" id="tab-1" name="tab-group-1" defaultChecked /*checked*/ />
+          <input
+            type="radio"
+            id="tab-1"
+            name="tab-group-1"
+            defaultChecked /*checked*/
+          />
           <label htmlFor="tab-1">Overview</label>
 
           <div className="content">
@@ -185,7 +201,10 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
             </div>
             <div className="head">Average Cost</div>
             <div className="value">
-              &#8377; {restaurantsData.restaurant && restaurantsData.restaurant.min_price} for two people(approx)
+              &#8377;{" "}
+              {restaurantsData.restaurant &&
+                restaurantsData.restaurant.min_price}{" "}
+              for two people(approx)
             </div>
           </div>
         </div>
@@ -196,9 +215,16 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
 
           <div className="content">
             <div className="head">Phone Number</div>
-            <div className="value">{restaurantsData.restaurant && restaurantsData.restaurant.contact_number}</div>
+            <div className="value">
+              {restaurantsData.restaurant &&
+                restaurantsData.restaurant.contact_number}
+            </div>
             <div className="head">Address</div>
-            <div className="value">{`${restaurantsData.restaurant && restaurantsData.restaurant.locality}, ${restaurantsData.restaurant && restaurantsData.restaurant.city}`}</div>
+            <div className="value">{`${
+              restaurantsData.restaurant && restaurantsData.restaurant.locality
+            }, ${
+              restaurantsData.restaurant && restaurantsData.restaurant.city
+            }`}</div>
           </div>
         </div>
       </div>
@@ -211,7 +237,9 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
             onClick={() => setMenuItemsModalIsOpen(false)}
           ></div>
           <div>
-            <h3 className="restaurant-name">{restaurantsData.restaurant && restaurantsData.restaurant.name}</h3>
+            <h3 className="restaurant-name">
+              {restaurantsData.restaurant && restaurantsData.restaurant.name}
+            </h3>
             <h3 className="item-total">SubTotal : {subTotal}</h3>
             <button
               className="btn btn-danger order-button"
@@ -223,77 +251,77 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
               {" "}
               Pay Now
             </button>
-            {menuItemsData.length && menuItemsData.map((item, index) => {
-              return (
-                <div key={index}
-                  style={{
-                    width: "44rem",
-                    marginTop: "10px",
-                    marginBottom: "10px",
-                    borderBottom: "2px solid #dbd8d8",
-                  }}
-                >
+            {menuItemsData.length &&
+              menuItemsData.map((item, index) => {
+                return (
                   <div
-                    className="card"
-                    style={{ width: "43rem", margin: "auto" }}
+                    key={index}
+                    style={{
+                      width: "44rem",
+                      marginTop: "10px",
+                      marginBottom: "10px",
+                      borderBottom: "2px solid #dbd8d8",
+                    }}
                   >
                     <div
-                      className="row"
-                      style={{ paddingLeft: "10px", paddingBottom: "10px" }}
+                      className="card"
+                      style={{ width: "43rem", margin: "auto" }}
                     >
                       <div
-                        className="col-xs-9 col-sm-9 col-md-9 col-lg-9 "
+                        className="row"
                         style={{ paddingLeft: "10px", paddingBottom: "10px" }}
                       >
-                        <span className="card-body">
-                          <h5 className="item-name">{item.name}</h5>
-                          <h5 className="item-price">&#8377;{item.price}</h5>
-                          <p className="item-descp">{item.description}</p>
-                        </span>
-                      </div>
-                      <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        <img
-                          className="card-img-center title-img"
-                          alt=""
-                          src={`../${item.image}`}
-                          style={{
-                            height: "75px",
-                            width: "75px",
-                            borderRadius: "20px",
-                            marginTop: "12px",
-                            marginLeft: "3px",
-                          }}
-                        />
-                        {item.qty === 0 ? (
-                          <div>
-                            <button
-                              className="add-button"
-                              onClick={() => addItems(index, "add")}
-                            >
-                              Add
-                            </button>
-                          </div>
-                        ) : (
-                          <div className="add-number">
-                            <button
-                              onClick={() => addItems(index, "subtract")}
-                            >
-                              -
-                            </button>
-                            <span className="qty">{item.qty}</span>
-                            <button
-                              onClick={() => addItems(index, "add")}
-                            >
-                              +
-                            </button>
-                          </div>
-                        )}
+                        <div
+                          className="col-xs-9 col-sm-9 col-md-9 col-lg-9 "
+                          style={{ paddingLeft: "10px", paddingBottom: "10px" }}
+                        >
+                          <span className="card-body">
+                            <h5 className="item-name">{item.name}</h5>
+                            <h5 className="item-price">&#8377;{item.price}</h5>
+                            <p className="item-descp">{item.description}</p>
+                          </span>
+                        </div>
+                        <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                          <img
+                            className="card-img-center title-img"
+                            alt=""
+                            src={`../${item.image}`}
+                            style={{
+                              height: "75px",
+                              width: "75px",
+                              borderRadius: "20px",
+                              marginTop: "12px",
+                              marginLeft: "3px",
+                            }}
+                          />
+                          {item.qty === 0 ? (
+                            <div>
+                              <button
+                                className="add-button"
+                                onClick={() => addItems(index, "add")}
+                              >
+                                Add
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="add-number">
+                              <button
+                                onClick={() => addItems(index, "subtract")}
+                              >
+                                -
+                              </button>
+                              <span className="qty">{item.qty}</span>
+                              <button onClick={() => addItems(index, "add")}>
+                                +
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
             <div
               className="card"
               style={{
@@ -376,15 +404,14 @@ function Details({ isMenuItemsModalIsOpen, fetchMenuItemsCall, fetchRestaurantsC
         </div>
       </Modal>
     </div>
-  )
+  );
 }
 
 const mapStateToProps = (state) => {
-
   return {
-    isRestaurantLoading: state.restaurantsDetails.loading,
-    restaurantsData: state.restaurantsDetails.restaurants,
-    isRestaurantError: state.restaurantsDetails.error,
+    isRestaurantLoading: state.restaurantDetails.loading,
+    restaurantsData: state.restaurantDetails.restaurant,
+    isRestaurantError: state.restaurantDetails.error,
     isMenuItemsLoading: state.menuItems.loading,
     menuItemsData: state.menuItems.menuItems,
     isMenuItemsError: state.menuItems.error,
@@ -394,8 +421,9 @@ const mapStateToProps = (state) => {
 
 const mapsDispatchToProps = (dispatch) => {
   return {
-    fetchRestaurantsCall: (restaurants) => dispatch(fetchRestaurants(restaurants)),
-    fetchMenuItemsCall: (restId) => dispatch(fetchMenuItems(restId))
+    fetchRestaurantsCall: (restaurants) =>
+      dispatch(fetchRestaurantsDetails(restaurants)),
+    fetchMenuItemsCall: (restId) => dispatch(fetchMenuItems(restId)),
   };
 };
 

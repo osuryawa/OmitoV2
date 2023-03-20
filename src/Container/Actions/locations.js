@@ -1,34 +1,34 @@
 import axios from "axios";
-import { mealTypesActions } from "./actions";
+import { locationsActions } from "./actions";
 import { constants } from "../../constants";
 
 export const isLoading = () => {
   return {
-    type: mealTypesActions.FETCH_MEALTYPE_REQUEST,
+    type: locationsActions.FETCH_lOCATIONS_REQUEST,
   };
 };
 
-const mealTypesLoaded = (mealTypes) => {
+const locationLoaded = (mealTypes) => {
   return {
-    type: mealTypesActions.FETCH_MEALTYPE_SUCCESS,
+    type: locationsActions.FETCH_lOCATIONS_SUCCESS,
     payload: mealTypes,
   };
 };
 
 const setIsError = (error) => {
   return {
-    type: mealTypesActions.FETCH_MEALTYPE_FAILURE,
+    type: locationsActions.FETCH_lOCATIONS_FAILURE,
     payload: error.message,
   };
 };
 
-export const fetchMealTypes = () => {
+export const fetchLocations = () => {
   return (dispatch) => {
     dispatch(isLoading());
     axios
-      .get(`${constants.hosts.localhost}/mealtypes`)
+      .get(`${constants.hosts.localhost}/locations`)
       .then((response) => {
-        dispatch(mealTypesLoaded(response.data));
+        dispatch(locationLoaded(response.data));
       })
       .catch((error) => {
         dispatch(setIsError(error));

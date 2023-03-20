@@ -1,29 +1,26 @@
 import React from "react";
-import axios from "axios";
+import { compose } from "redux";
 import { useState } from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { fetchRestaurants } from "../Container/Actions/restaurants";
 import "../Styles/home.css";
 
 const Wallpaper = (props) => {
-  const { locationsData } = props;
-  const [restaurants, setRestaurants] = useState([]);
+  const { locationsData, fetchRestaurantsList, restaurantsLists } = props;
   const [inputText, setInputText] = useState(undefined);
   const [suggestions, setSuggestions] = useState([]);
+
+  const restaurants =
+    restaurantsLists && restaurantsLists.restaurants
+      ? restaurantsLists.restaurants
+      : [];
 
   const handleLocationChange = (event) => {
     const locationId = event.target.value;
     sessionStorage.setItem("locationId", locationId);
 
-    axios({
-      method: "GET",
-      url: `http://localhost:4567/restaurants/${locationId}`,
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => {
-        setRestaurants(response.data.restaurants);
-        setInputText("");
-      })
-      .catch();
+    fetchRestaurantsList(locationId);
   };
 
   const handleSearch = (event) => {
@@ -108,4 +105,20 @@ const Wallpaper = (props) => {
   );
 };
 
-export default withRouter(Wallpaper);
+const mapStateToProps = (state) => {
+  return {
+    restaurantsLists: state.restaurants,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchRestaurantsList: (locationId) =>
+      dispatch(fetchRestaurants(locationId)),
+  };
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Wallpaper);

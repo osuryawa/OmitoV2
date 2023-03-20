@@ -2,7 +2,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./Home";
 import Filter from "./Filter";
 import Details from "./Details";
-import Header from "./header";
+import Header from "./Header";
 
 function Router() {
   return (

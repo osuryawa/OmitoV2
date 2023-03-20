@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
-import { restaurantsDetails } from "./details";
+import { restaurantDetails } from "./restraurantDetails";
 import { mealTypes } from "./mealTypes";
-import { menuItems } from './menuItems'
-
+import { menuItems } from "./menuItems";
+import { locations } from "./locations";
+import { restaurants } from "./restaurants";
 const rootReducer = combineReducers({
-    mealTypes,
-    restaurantsDetails,
-    menuItems,
-})
+  mealTypes,
+  restaurantDetails,
+  menuItems,
+  locations,
+  restaurants,
+});
 
 export default rootReducer;

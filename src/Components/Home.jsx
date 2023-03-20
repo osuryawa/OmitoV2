@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "../Styles/home.css";
 import Wallpaper from "./Wallpaper";
-import QuickSearch from "./quickSearch";
+import QuickSearch from "./QuickSearch";
 import { fetchMealTypes } from "../Container/Actions/mealTypes";
+import { fetchLocations } from "../Container/Actions/locations";
 
 const Home = (props) => {
-  const { mealTypeData, isMealtypesLoading } = props;
-  const [locations, setLocations] = useState([]);
+  const { mealTypesDetails, locationsData, fetchLocations, fetchMealTypes } =
+    props;
 
   const mealTypes =
-    mealTypeData && mealTypeData.mealtype ? mealTypeData.mealtype : [];
+    mealTypesDetails &&
+    mealTypesDetails.mealTypeData &&
+    mealTypesDetails.mealTypeData.mealtype
+      ? mealTypesDetails.mealTypeData.mealtype
+      : [];
+
+  const isMealtypesLoading = mealTypesDetails && mealTypesDetails.loading;
+
+  const locations =
+    locationsData && locationsData.locations ? locationsData.locations : [];
 
   useEffect(() => {
     sessionStorage.clear();
-
-    axios({
-      method: "GET",
-      url: "http://localhost:4567/locations",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => {
-        setLocations(response.data.locations);
-      })
-      .catch();
-
-    props.fetchMealTypes();
+    fetchLocations();
+    fetchMealTypes();
   }, []);
 
   return (
@@ -47,14 +46,15 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    mealTypeData: state.mealTypes.mealTypeData,
-    isMealtypesLoading: state.mealTypes.loading,
+    mealTypesDetails: state.mealTypes,
+    locationsData: state.locations.locationsData,
   };
 };
 
 const mapsDispatchToProps = (dispatch) => {
   return {
     fetchMealTypes: () => dispatch(fetchMealTypes()),
+    fetchLocations: () => dispatch(fetchLocations()),
   };
 };
 
