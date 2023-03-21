@@ -25,7 +25,7 @@ const Filter = (props) => {
     };
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
@@ -38,7 +38,7 @@ const Filter = (props) => {
 
     axios({
       method: "GET",
-      url: "http://localhost:4567/locations",
+      url: "http://100.25.134.2:4567/locations",
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
@@ -60,7 +60,7 @@ const Filter = (props) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
@@ -85,7 +85,7 @@ const Filter = (props) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
@@ -112,7 +112,7 @@ const Filter = (props) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
@@ -136,7 +136,7 @@ const Filter = (props) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
@@ -169,7 +169,7 @@ const Filter = (props) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:4567/filter",
+      url: "http://100.25.134.2:4567/filter",
       headers: { "Content-Type": "application/json" },
       data: filterObj,
     })
