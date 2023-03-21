@@ -1,5 +1,5 @@
 export const constants = {
   hosts: {
-    localhost: "http://localhost:4567",
+    localhost: "http://100.25.134.2:4567",
   },
 };
