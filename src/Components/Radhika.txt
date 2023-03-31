@@ -9,11 +9,8 @@ Those who have never faced adversity in their lives have one perspective on life
 
 
 Omkar's task-
-<<<<<<< HEAD
 Paragraph 0
-=======
 Paragraph 4 
->>>>>>> 898a4d637b1b9196b89130c64a1f9958f1cb0d38
 We are born, live our lives, and eventually pass away with time.
 We are attempting to shape our lives in this way.
 Everyone's life is different.
