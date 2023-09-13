@@ -6,6 +6,8 @@ import GoogleLogin from "react-google-login";
 import { useState } from "react";
 import Login from "./login";
 import SignUpForm from "./signUp-form";
+import { FaTimes } from "react-icons/fa";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -94,7 +96,18 @@ const Header = (props) => {
           setEmail={setEmail}
           setLoginPageIsOpen={setLoginPageIsOpen}
         />
-        <button onClick={() => handleLoginPage(false)}>Close Modal</button>
+        <button
+          onClick={() => handleLoginPage(false)}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            background: "none",
+            border: "none",
+          }}
+        >
+          <FaTimes />
+        </button>
       </Modal>
       <Modal
         isOpen={userformISopen}

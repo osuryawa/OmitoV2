@@ -16,7 +16,7 @@ const Wallpaper = (props) => {
 
     axios({
       method: "GET",
-      url: `http://100.25.134.2:4567/restaurants/${locationId}`,
+      url: `http://localhost:4567/restaurants/${locationId}`,
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
