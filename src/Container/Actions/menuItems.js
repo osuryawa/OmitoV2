@@ -1,16 +1,3 @@
-// axios({
-//     method: "GET",
-//     url: `http://100.25.134.2:4567/menuitems/${restId}`,
-//     headers: { "Content-Type": "application/json" },
-// })
-//     .then((response) => {
-//         this.setState({
-//             menuItems: response.data.items,
-//             menuItemsModalIsOpen: true,
-//         });
-//     })
-//     .catch();
-
 import axios from "axios";
 import { menuItemsActions } from "./actions";
 
@@ -39,7 +26,7 @@ export const fetchMenuItems = (restId) => {
     dispatch(fetchMenuItemsRequest());
     axios({
       method: "GET",
-      url: `http://100.25.134.2:4567/menuitems/${restId}`,
+      url: `http://localhost:4567/menuitems/${restId}`,
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {

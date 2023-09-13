@@ -26,7 +26,7 @@ export const fetchRestaurants = (restaurant) => {
     dispatch(fetchRestaurantRequest());
     axios({
       method: "GET",
-      url: `http://100.25.134.2:4567/restaurant/${restaurant}`,
+      url: `http://localhost:4567/restaurant/${restaurant}`,
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {

@@ -124,7 +124,7 @@ function Details({
   };
 
   const getData = (data) => {
-    return fetch(`http://100.25.134.2:4567/payment`, {
+    return fetch(`http://localhost:4567/payment`, {
       method: "POST",
       headers: {
         Accept: "application/json",
